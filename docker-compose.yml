@@ -15,7 +15,7 @@ services:
       - TS_STATE_DIR=/var/lib/tailscale
     volumes:
       - /home/node/.openclaw/tailscale:/var/lib/tailscale
-      - /dev/net/tun:/dev/net/tun
+      #- /dev/net/tun:/dev/net/tun
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
