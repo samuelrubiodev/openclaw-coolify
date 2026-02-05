@@ -10,6 +10,7 @@ services:
     hostname: astra-gateway
     environment:
       - TS_AUTHKEY=${TS_AUTHKEY}
+      - TS_EXTRA_ARGS=${TS_EXTRA_ARGS}
       - TS_STATE_DIR=/var/lib/tailscale
     volumes:
       - /home/node/.openclaw/tailscale:/var/lib/tailscale
