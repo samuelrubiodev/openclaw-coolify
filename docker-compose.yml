@@ -52,9 +52,9 @@ services:
       - openclaw-workspace:/home/node/.openclaw/workspace
     init: true
     restart: unless-stopped
-    command: ["node", "dist/index.js", "gateway", "--bind", "loopback", "--allow-unconfigured"]
+    command: [ "node", "dist/index.js", "gateway", "--bind", "loopback", "--allow-unconfigured" ]
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:18789/health"]
+      test: [ "CMD", "curl", "-f", "http://localhost:18789/health" ]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -62,7 +62,6 @@ services:
     network_mode: "service:tailscale"
     depends_on:
       - tailscale
-
   openclaw-cli:
     build:
       context: .
@@ -88,7 +87,7 @@ services:
     stdin_open: true
     tty: true
     init: true
-    entrypoint: ["node", "dist/index.js"]
+    entrypoint: [ "node", "dist/index.js" ]
     profiles:
       - cli
 
