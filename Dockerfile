@@ -205,7 +205,7 @@ RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,shar
   fi
 
 RUN if [ -n "$OPENCLAW_DOCKER_PIP_PACKAGES" ]; then \
-    pip3 install --no-cache-dir $OPENCLAW_DOCKER_PIP_PACKAGES; \
+    pip3 install --no-cache-dir --break-system-packages $OPENCLAW_DOCKER_PIP_PACKAGES; \
   fi
 
 RUN npm install -g undici clawhub 
