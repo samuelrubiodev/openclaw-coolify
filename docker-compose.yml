@@ -38,7 +38,7 @@ services:
       - OPENCLAW_GATEWAY_PORT=18789
       - OPENCLAW_LOAD_SHELL_ENV=1
       - OPENCLAW_SHELL_ENV_TIMEOUT_MS=15000
-      - OPENCLAW_DOCKER_APT_PACKAGES=ffmpeg build-essential git jq python3-pip python3-requests nano
+      - OPENCLAW_DOCKER_APT_PACKAGES=ffmpeg build-essential git jq python3-pip python3-requests nano scrapling
       - OPENCLAW_ALLOW_UNCONFIGURED=true
       - CLAWHUB_WORKDIR=/home/node/.openclaw
       - CLAWHUB_DISABLE_TELEMETRY=1
