@@ -27,7 +27,7 @@ services:
       dockerfile: Dockerfile
       args:
         - OPENCLAW_DOCKER_APT_PACKAGES=ffmpeg build-essential git jq python3-pip python3-requests nano
-        - OPENCLAW_DOCKER_PIP_PACKAGES=scrapling
+        - OPENCLAW_DOCKER_PIP_PACKAGES=scrapling[all]
     environment:
       - HOME=/home/node
       - TERM=xterm-256color
@@ -42,7 +42,7 @@ services:
       - OPENCLAW_LOAD_SHELL_ENV=1
       - OPENCLAW_SHELL_ENV_TIMEOUT_MS=15000
       - OPENCLAW_DOCKER_APT_PACKAGES=ffmpeg build-essential git jq python3-pip python3-requests nano
-      - OPENCLAW_DOCKER_PIP_PACKAGES=scrapling
+      - OPENCLAW_DOCKER_PIP_PACKAGES=scrapling[all]
       - OPENCLAW_ALLOW_UNCONFIGURED=true
       - CLAWHUB_WORKDIR=/home/node/.openclaw
       - CLAWHUB_DISABLE_TELEMETRY=1
