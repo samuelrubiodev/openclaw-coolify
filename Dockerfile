@@ -192,7 +192,10 @@ RUN install -d -m 0755 "$COREPACK_HOME" && \
 # Install additional system packages needed by your skills or extensions.
 # Example: docker build --build-arg OPENCLAW_DOCKER_APT_PACKAGES="python3 wget" .
 ARG OPENCLAW_DOCKER_APT_PACKAGES=""
+ARG OPENCLAW_DOCKER_PIP_PACKAGES=""
+
 ENV OPENCLAW_DOCKER_APT_PACKAGES=$OPENCLAW_DOCKER_APT_PACKAGES
+ENV OPENCLAW_DOCKER_PIP_PACKAGES=$OPENCLAW_DOCKER_PIP_PACKAGES
 
 RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked \
   --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked \
@@ -200,6 +203,11 @@ RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,shar
   apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends $OPENCLAW_DOCKER_APT_PACKAGES; \
   fi
+
+RUN if [ -n "$OPENCLAW_DOCKER_PIP_PACKAGES" ]; then \
+    pip3 install --no-cache-dir $OPENCLAW_DOCKER_PIP_PACKAGES; \
+  fi
+
 RUN npm install -g undici clawhub 
 RUN npm install -g @google/gemini-cli
 RUN npm install -g typescript shx
